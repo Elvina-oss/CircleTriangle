@@ -1,0 +1,27 @@
+SELECT products_name, category_name
+from (select * from products 
+      left join products_category
+      on (products.id == products_id)
+      left join category
+      on (category.id == category_id))
+
+---для таблиц:
+CREATE TABLE products (
+  id INTEGER PRIMARY KEY,
+  products_name TEXT NOT NULL
+);
+
+CREATE TABLE category (
+    id INTEGER PRIMARY KEY,
+    category_name TEXT NOT NULL
+);
+ CREATE TABLE products_category(
+    products_id INTEGER NOT NULL,
+    category_id INTEGER NOT NULL,
+    foreign key (products_id) references products(id),
+    foreign key (category_id) references category(id)
+ );
+
+
+
+
